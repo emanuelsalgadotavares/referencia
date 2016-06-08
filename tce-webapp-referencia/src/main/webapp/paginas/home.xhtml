@@ -1,0 +1,36 @@
+<ui:composition template="../WEB-INF/templates/page.xhtml"
+	  xmlns="http://www.w3.org/1999/xhtml"     
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:h="http://java.sun.com/jsf/html"
+ 	  xmlns:c="http://java.sun.com/jsp/jstl/core"
+	  xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+	
+		<p:panelGrid layout="grid" styleClass="semBorda" style="width:100%" columns="3" >
+			
+			<h:panelGroup style="width:80px;"/>
+			
+			<h:panelGroup>	
+				<div class="pricing-table most-popular">
+	                <div class="pricing-head">
+	                    <h1> Bem-vindo </h1>
+					</div>
+	                <div class="pricing-quote">
+	                    <p:graphicImage style="margin-top:60px;" library="icones" value="/resources/img/logo_tce_ico.png" />
+	                </div>
+	                <ul class="list-unstyled" >
+	                    <li>WebApp</li>
+	                    <li>Aplicação de Referência</li>
+	                </ul>
+	            </div>
+            </h:panelGroup>
+            
+			<h:panelGroup style="width:80px;"/>
+			
+		</p:panelGrid>
+		
+	
+	</ui:define>
+</ui:composition>
