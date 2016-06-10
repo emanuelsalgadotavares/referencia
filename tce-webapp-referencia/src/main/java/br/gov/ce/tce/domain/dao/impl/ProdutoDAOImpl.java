@@ -14,7 +14,7 @@ public class ProdutoDAOImpl extends GenericDAOImpl<Produto> implements ProdutoDA
 
 	@Override
 	public List<Produto> findByTipo(TipoProdutoEnum tipo) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub //
 		return null;
 	}
 

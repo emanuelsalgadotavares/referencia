@@ -86,6 +86,7 @@ public class GenericDAOImpl<T> implements GenericDAO<T>{
 	@Override
 	public List<T> findAll() {
 		getLogger().info("Buscando todas as entidades da classe: " + persistentClass);
+		getLogger();
 		return find(-1, -1);
 	}
 
