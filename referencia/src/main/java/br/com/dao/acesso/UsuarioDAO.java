@@ -10,7 +10,7 @@ import javax.persistence.Query;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
-import br.com.entity.acesso.Usuario;
+import br.com.model.acesso.User;
 
 @Repository
 public class UsuarioDAO {
@@ -25,36 +25,36 @@ public class UsuarioDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Usuario> findAll() {
+	public List<User> findAll() {
 		Query query = entityManager.createQuery("SELECT u FROM Usuario u ORDER BY u.id");
 
 		return query.getResultList();
 	}
 
-	public Usuario findById(Long id) {
+	public User findById(Long id) {
 		try {
 			Query query = entityManager.createQuery("SELECT u FROM Usuario u WHERE u.id = :id");
 			query.setParameter("id", id);
 
-			return (Usuario) query.getSingleResult();
+			return (User) query.getSingleResult();
 		} catch (NoResultException e) {
 			return null;
 		}
 	}
 
-	public Usuario findByUsername(String nome) {
+	public User findByUsername(String nome) {
 		try {
 			Query query = entityManager.createQuery("SELECT usu FROM Usuario usu WHERE UPPER(usu.username) = UPPER(:username)");
 			query.setParameter("username", nome);
 
-			return (Usuario) query.getSingleResult();
+			return (User) query.getSingleResult();
 		} catch (NoResultException e) {
 			return null;
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Usuario> findByNome(String nome) {
+	public List<User> findByNome(String nome) {
 		try {
 			Query query = entityManager.createQuery("SELECT usu FROM Usuario usu WHERE UPPER( usu.nome ) LIKE :nome ORDER BY usu.nome");
 			query.setParameter("nome", "%" + nome.toUpperCase() + "%");
@@ -65,19 +65,8 @@ public class UsuarioDAO {
 		}
 	}
 
-	public Usuario findByUsuario(Usuario usuario) {
+	public User findByUsuario(User usuario) {
 		return findById(usuario.getId());
 	}
 
-	public Usuario findByCpf(String cpf) {
-		try {
-			Query query = entityManager.createNamedQuery("Usuario.findByCpf");
-			query.setParameter("cpf", cpf);
-
-			return (Usuario) query.getSingleResult();
-		} catch (Exception e) {
-			return null;
-		}
-	}
-	
 }

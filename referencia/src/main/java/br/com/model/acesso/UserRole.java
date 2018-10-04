@@ -1,4 +1,4 @@
-package br.com.entity.acesso;
+package br.com.model.acesso;
 
 import java.io.Serializable;
 
@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import br.com.model.BasicEntity;
 
 @Entity
-public class UsuarioPermissao extends BasicEntity<Long> implements Serializable {
+public class UserRole extends BasicEntity<Long> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,23 +21,23 @@ public class UsuarioPermissao extends BasicEntity<Long> implements Serializable 
 	private Long id;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="GRUPO")		
-	private Grupo grupo;
+	@JoinColumn(name="idgroup")		
+	private Group grupo;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="USUARIO", nullable = true)		
-	private Usuario usuario;
+	@JoinColumn(name="iduser", nullable = true)		
+	private User usuario;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="SECAO")
-	private Permissao secao;
+	@JoinColumn(name="idrole")
+	private Role secao;
 
 	/* CONSTRUTORES */
-	public UsuarioPermissao() {
+	public UserRole() {
 		super();
 	}
 
-	public UsuarioPermissao(Long id, Grupo grupo, Permissao secao, Usuario usuario) {	
+	public UserRole(Long id, Group grupo, Role secao, User usuario) {	
 		this.id = id;
 		this.grupo = grupo;
 		this.secao = secao;
@@ -52,25 +52,25 @@ public class UsuarioPermissao extends BasicEntity<Long> implements Serializable 
 		this.id = id;
 	}
 
-	public Grupo getGrupo() {
+	public Group getGrupo() {
 		return grupo;
 	}
-	public void setGrupo(Grupo grupo) {
+	public void setGrupo(Group grupo) {
 		this.grupo = grupo;
 	}
 
-	public Permissao getSecao() {
-		return secao;
-	}
-	public void setSecao(Permissao secao) {
-		this.secao = secao;
-	}
-
-	public Usuario getUsuario() {
+	public User getUsuario() {
 		return usuario;
 	}
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(User usuario) {
 		this.usuario = usuario;
+	}
+
+	public Role getSecao() {
+		return secao;
+	}
+	public void setSecao(Role secao) {
+		this.secao = secao;
 	}
 
 }

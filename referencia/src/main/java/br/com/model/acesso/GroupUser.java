@@ -1,4 +1,4 @@
-package br.com.entity.acesso;
+package br.com.model.acesso;
 
 import java.io.Serializable;
 
@@ -14,7 +14,7 @@ import br.com.model.BasicEntity;
 
 @Entity
 @BatchSize(size=1000)
-public class GrupoUsuario extends BasicEntity<Long> implements Serializable {
+public class GroupUser extends BasicEntity<Long> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -22,12 +22,12 @@ public class GrupoUsuario extends BasicEntity<Long> implements Serializable {
 	private Long id;
 
 	@ManyToOne(fetch=FetchType.LAZY) 
-	@JoinColumn(name = "GRUPO")	
-	private Grupo grupo;
+	@JoinColumn(name = "idgroup")	
+	private Group grupo;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="USUARIO")	
-	private Usuario usuario;
+	@JoinColumn(name="iduser")	
+	private User usuario;
 
 	/* GET & SET */
 	public Long getId() {
@@ -37,17 +37,17 @@ public class GrupoUsuario extends BasicEntity<Long> implements Serializable {
 		this.id = id;
 	}
 
-	public Grupo getGrupo() {
+	public Group getGrupo() {
 		return grupo;
 	}
-	public void setGrupo(Grupo grupo) {
+	public void setGrupo(Group grupo) {
 		this.grupo = grupo;
 	}
 
-	public Usuario getUsuario() {
+	public User getUsuario() {
 		return usuario;
 	}
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
 

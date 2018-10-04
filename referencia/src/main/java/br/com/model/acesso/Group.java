@@ -1,4 +1,4 @@
-package br.com.entity.acesso;
+package br.com.model.acesso;
 
 import java.io.Serializable;
 
@@ -9,15 +9,15 @@ import javax.persistence.Id;
 import br.com.model.BasicEntity;
 
 @Entity
-public class Grupo extends BasicEntity<Long> implements Serializable {
+public class Group extends BasicEntity<Long> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "NOME")
+	@Column(name = "nome")
 	private String nome;
 	
 	/* GET & SET */

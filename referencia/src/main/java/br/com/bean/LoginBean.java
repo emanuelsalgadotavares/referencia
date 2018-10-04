@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import br.com.entity.acesso.Usuario;
 import br.com.exception.BusinessException;
+import br.com.model.acesso.User;
 import br.com.service.acesso.AuthenticationService;
 
 @SuppressWarnings("serial")
@@ -47,7 +47,7 @@ public class LoginBean extends GenericBean implements Serializable {
 		return "/paginas/home.xhtml?faces-redirect=true";
 	}
 
-	public Usuario getUsuarioLogado() throws BusinessException {
+	public User getUsuarioLogado() throws BusinessException {
 		return authenticationService.getUsuarioLogado();
 	}
  

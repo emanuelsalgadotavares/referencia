@@ -19,8 +19,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import br.com.entity.acesso.Usuario;
 import br.com.exception.BusinessException;
+import br.com.model.acesso.User;
 
 @Component
 public class AuthenticationService implements Serializable {
@@ -63,7 +63,7 @@ public class AuthenticationService implements Serializable {
 		SecurityContextHolder.getContext().setAuthentication(authenticate);
 
 		// pergando o usuario
-		Usuario usuario = (Usuario) getUsuarioLogado();
+		User usuario = (User) getUsuarioLogado();
 		
 		// verificando se o usuario esta ativo
 		if (!usuario.isEnabled()) {
@@ -105,12 +105,12 @@ public class AuthenticationService implements Serializable {
 		session.invalidate();
 	}
 
-	public Usuario getUsuarioLogado() throws BusinessException {
+	public User getUsuarioLogado() throws BusinessException {
 		try {
 			Authentication context = SecurityContextHolder.getContext().getAuthentication();
 			
 			if(context != null && context.isAuthenticated()){
-				return (Usuario) context.getPrincipal();
+				return (User) context.getPrincipal();
 			}
 		} catch (Exception e) {
 			throw new BusinessException("Erro na identificação do usuário logado. Favor efetuar novo login.");

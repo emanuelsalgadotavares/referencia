@@ -1,4 +1,4 @@
-package br.com.entity.acesso;
+package br.com.model.acesso;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import br.com.model.BasicEntity;
 
 @Entity
-public class Usuario extends BasicEntity<Long> implements Serializable, UserDetails {
+public class User extends BasicEntity<Long> implements Serializable, UserDetails {
 
 	private static final long serialVersionUID = -8451679170281063697L;
 
@@ -31,39 +31,30 @@ public class Usuario extends BasicEntity<Long> implements Serializable, UserDeta
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name="NOME")
+	@Column(name="nome")
 	private String nome;
 
-	@Column(name="LOGIN", unique = true)
+	@Column(name="login", unique = true)
 	private String username;
 
-	@Column(name="SENHA")
+	@Column(name="senha")
 	private String password;
 	
-	@Column(name="CPF")
-	private String cpf;
-
-	@Column(name="ATIVO")
+	@Column(name="ativo")
 	private boolean ativo;
 	
-	@Column(name="SENHAEXPIRADA")
+	@Column(name="senhaexpirada")
 	private boolean senhaExpirada;
 
-	@Column(name="DATAALTERACAO")
-	private Date dataAlteracao;
-	
-	@Column(name="DATAINCLUSAO")
+	@Column(name="datainclusao")
 	private Date dataInclusao;
 	
-	@Column(name="EMAIL")
+	@Column(name="email")
 	private String email;
 
-	@Column(name="DTVALIDADECERTIFICADO")
-	private Date dtValidadeCertificado;
-
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name="GRUPOUSUARIO", schema="SCA", joinColumns = @JoinColumn(name = "USUARIO"), inverseJoinColumns = @JoinColumn(name = "GRUPO"))
-	private List<Grupo> grupoList;
+	@JoinTable(name="groupuser", schema="drivingschool", joinColumns = @JoinColumn(name = "iduser"), inverseJoinColumns = @JoinColumn(name = "idgroup"))
+	private List<Group> grupoList;
 
 	@Transient
 	private Collection<GrantedAuthority> authorities = new ArrayList<>();
@@ -165,20 +156,6 @@ public class Usuario extends BasicEntity<Long> implements Serializable, UserDeta
 		this.nome = nome;
 	}
 
-    public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	
-	public Date getDataAlteracao() {
-		return dataAlteracao;
-	}
-	public void setDataAlteracao(Date dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
-	}
-
 	public Date getDataInclusao() {
 		return dataInclusao;
 	}
@@ -193,17 +170,10 @@ public class Usuario extends BasicEntity<Long> implements Serializable, UserDeta
 		this.email = email;
 	}
 
-	public Date getDtValidadeCertificado() {
-		return dtValidadeCertificado;
-	}
-	public void setDtValidadeCertificado(Date dtValidadeCertificado) {
-		this.dtValidadeCertificado = dtValidadeCertificado;
-	}
-
-	public List<Grupo> getGrupoList() {
+	public List<Group> getGrupoList() {
 		return grupoList;
 	}
-	public void setGrupoList(List<Grupo> grupoList) {
+	public void setGrupoList(List<Group> grupoList) {
 		this.grupoList = grupoList;
 	}
 
