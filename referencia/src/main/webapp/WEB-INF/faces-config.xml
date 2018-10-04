@@ -9,7 +9,7 @@
 
 	<converter>
 	 	<converter-id>entityConverter</converter-id>
-	 	<converter-class>br.gov.ce.tce.controller.converter.EntityConverter</converter-class>
+	 	<converter-class>br.com.converter.EntityConverter</converter-class>
 	</converter>
 	
 	<application>
