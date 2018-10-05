@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-br" lang="pt-br"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head>
+		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+		<title>#{msg['application.name']}</title>
+
+		<h:outputStylesheet library="css" name="responsive.css" />
+		<h:outputStylesheet library="css" name="geral.css" />
+	</h:head>
+	
+	<h:body id="entirePage">
+		<f:view>
+			<div>
+				<div>
+					<!-- TOPO -->
+					<div id="topo">
+						<!-- <ui:include src="topo.xhtml" /> -->
+						<h:form>
+							<h1>
+								<label>#{msg['application.name']}</label>
+							</h1>
+						
+							<h2>Nome da Empresa</h2>
+						</h:form>
+					</div>
+
+					<!-- MENU -->
+					<div>
+						<!-- <ui:include src="menu.xhtml" /> -->
+						<f:view>
+							<h:form id="menuForm">
+								<h2 class="dn">Menu Principal</h2>
+
+								<p:menubar>
+									<p:submenu label="Cadastros" icon="ui-icon-contact">
+						                <p:menuitem value="Cadastrar Cliente" url="#" />
+						                <p:menuitem value="Cadastrar Pedido" url="#" />
+						            </p:submenu>
+
+									<f:facet name="options">
+										<p:menuButton value="#{loginBean.usuarioLogado.username}">
+											<p:menuitem value="Info" oncomplete="PF('dlgUser').show()"
+												icon="ui-icon-info" />
+
+											<p:separator />
+
+											<p:menuitem value="Sair" action="#{loginBean.logout}"
+												update="menuForm" icon="ui-icon-key" />
+										</p:menuButton>
+									</f:facet>
+								</p:menubar>
+							</h:form>
+						
+							<p:dialog header="Informações do Usuário" widgetVar="dlgUser"
+								draggable="false" modal="true" minHeight="300" maxHeight="600"
+								width="1100" resizable="false">
+								<p:scrollPanel id="display_user"
+									style="width:100%; min-height:300px; max-height:500px;" styleClass=""
+									mode="native">
+						
+									<p class="valor-campo" style="font-size: 2.1em; padding: 10px;">
+										Nome: #{loginBean.usuarioLogado.nome}</p>
+								</p:scrollPanel>
+							</p:dialog>
+						</f:view>
+					</div>
+
+					<!-- CORPO -->
+					<div>
+						<div id="corpo-conteiner">
+							<ui:insert name="content">
+									conteudo da pagina!!!
+								</ui:insert>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+			<div id="rodape">
+				<center>
+					<div>
+						<p>#{msg['application.copyright']} | Versão
+							#{msg['application.version']}</p>
+						<p>#{msg['application.endereco']}</p>
+					</div>
+				</center>
+			</div>
+		</f:view>
+	</h:body>
+</html>

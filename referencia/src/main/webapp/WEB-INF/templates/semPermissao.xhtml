@@ -3,36 +3,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:sec="http://www.springframework.org/security/facelets/tags">
 
 	<h:head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	
-		<title>Tela de erro do sistema</title>
-	
+		<title>Nome do Sistema</title>
 		<h:outputStylesheet library="css" name="geral.css" />
 	</h:head>
 
 	<h:body>
 		<f:view>
-			<div class="geral">
-				<div class="conteiner-geral">
-					<div class="topo">
+			<div>
+				<div>
+					<div>
 						<h1>
-							<a href="#" title=""> Sistema </a>
+							<a href="#" title=""> Sigla Sistema - Nome do Sistema </a>
 						</h1>
 	
 						<h2>Nome da Empresa</h2>
-	
+
 						<div>
 							<h:form>
-								<h2>Login</h2>
+								<h2 class="dn">Login</h2>
 	
 								<p>
 									Olá, <span><h:outputText
 											value="#{LoginBean.usuarioLogado}" /></span>
 								</p>
-	
+
 								<h:outputLink title="Sair"
 									value="#{facesContext.externalContext.requestContextPath}/logout.jsp">
 									<h:outputText value="Sair" />
@@ -40,26 +39,26 @@
 							</h:form>
 						</div>
 					</div>
-	
+
 					<div>
 						<ui:include src="menu.xhtml" />
 					</div>
-	
+
 					<div>
 						<div>
 							<div>
 								<h2>Você não tem Permissão de Acesso!</h2>
 							</div>
-	
+
 							<div>
 								<div></div>
 							</div>
 						</div>
 					</div>
-	
+
 					<div>
 						<div>
-							<p>@Copyright - Nome Empresa</p>
+							<p>@Copyright - asdasdasdas</p>
 						</div>
 					</div>
 				</div>

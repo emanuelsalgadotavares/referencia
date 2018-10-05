@@ -8,24 +8,22 @@
 	
 	<ui:define name="content">
 
-		<h:form id="form" styleClass="formularios">
+		<h:form id="form">
 
-			<div class="box-inputs inline-table">
+			<div>
 				<div class="mg-bottom-10 left centralize">
 					<label class="titulo">Bem-vindo</label>
 					<label class="subtitulo">Digite seus dados para ter acesso ao sistema</label>
 				</div>
 
 				<div class="mg-bottom-10 left centralize">
-					<p:inputText id="login" value="#{loginBean.login}" label="Login"
-						placeholder="Digite seu nome de usuário" required="true" />
+					<p:inputText id="login" value="#{loginBean.login}" required="true" label="Login" placeholder="Digite seu nome de usuário" />
 				</div>
 
 				<div class="mg-bottom-10 left centralize">						
-					<p:password id="senha" value="#{loginBean.senha}" label="Senha"
-						required="true" placeholder="Digite sua senha" />
+					<p:password id="senha" value="#{loginBean.senha}" required="true" label="Senha" placeholder="Digite sua senha"/>
 				</div>
-
+				
 				<p:messages id="messages" showDetail="false" autoUpdate="true" styleClass="centralize" showIcon="false" />
 
 				<div class="mg-bottom-10 left centralize">		
